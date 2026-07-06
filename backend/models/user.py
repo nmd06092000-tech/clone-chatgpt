@@ -1,19 +1,18 @@
-from sqlalchemy import Column
-from sqlalchemy import Integer
+import uuid
+
+from sqlanchemy import Column
 from sqlalchemy import String
+from sqlalchemy import DateTime
+
+from sqlalchemy.dialects.postgresql import UUID
+
+from sqlalchemy.orm import relationship
+
+from sqlalchemy.sql import func
 
 from database import Base
 
-
 class User(Base):
-    __tablename__ = "users"
+    __tablename__ = "user"
 
-    id = Column(
-        Integer,
-        primary_key=True,
-        index=True
-    )
-
-    username = Column(
-        String
-    )
+    id = Column
