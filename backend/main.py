@@ -6,6 +6,7 @@ from database import engine
 from database import SessionLocal
 
 from models.user import User
+from models.ai_modern import AiModern
 from models.conversation import Conversation
 from models.message import Message
 

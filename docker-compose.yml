@@ -20,7 +20,7 @@ services:
 
     container_name: backend
     environment:
-      - DATABASE_URL: postgresql+psycopg2://appuser:apppass@postgres:5432/chatdb
+      DATABASE_URL: postgresql+psycopg2://appuser:apppass@postgres:5432/chatdb
     ports:
       - "8000:8000"
 
