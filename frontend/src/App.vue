@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import MainLayout from "./layouts/MainLayout.vue";
+import ChatView from "./views/ChatView.vue";
 </script>
 
 <template>
-  <MainLayout />
+  <ChatView />
 </template>

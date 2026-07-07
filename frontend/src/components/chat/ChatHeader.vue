@@ -1,36 +1,26 @@
-<script setup lang="ts">
-const emit = defineEmits([
-  "toggle-sidebar"
-]);
-
-defineProps<{
-  modelName: string;
-}>();
-</script>
-
 <template>
   <header
     class="
-    h-16
-    px-4
-    flex
-    items-center
-    justify-between
+      h-14
+      border-b
+      flex
+      items-center
+      
+      px-8
     "
   >
+    <div class="flex items-center gap-2">
+      <span class="font-semibold text-xl">
+        ChatGPT
+      </span>
 
-    <button
-      class="text-2xl lg:hidden"
-      @click="emit('toggle-sidebar')"
-    >
-      ☰
-    </button>
-
-    <div class="flex-1 text-center text-2xl">
-      {{ modelName }}
+      <span class="text-gray-400">
+        ▼
+      </span>
     </div>
 
-    <div class="w-8" />
-
+    <span class="text-gray-400">
+      GPT-4o
+    </span>
   </header>
 </template>

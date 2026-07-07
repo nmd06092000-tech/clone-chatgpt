@@ -1,18 +1,23 @@
 <template>
-  <div class="p-4">
+  <div class="p-2">
     <button
       class="
-      w-full
-      rounded-2xl
-      bg-white
-      px-4
-      py-3
-      text-left
-      shadow-sm
-      hover:bg-neutral-50
+        w-full
+        flex
+        items-center
+        gap-3
+        p-2
+        rounded-2xl
+        border
+        bg-white
+        hover:bg-gray-50
       "
     >
-      + New Chat
+      <span class="text-xl">+</span>
+
+      <span class="font-medium">
+        New chat
+      </span>
     </button>
   </div>
 </template>
