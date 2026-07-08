@@ -1,6 +1,6 @@
 <template>
   <header
-    class="h-14 border-b border-gray-200 shadow flex items-center justify-between px-8 py-2">
+    class="h-13 border-b border-gray-200 shadow flex items-center justify-between px-8 py-2">
     <div class="flex items-center gap-2">
       <span class="font-semibold text-l">
         GPT-4o

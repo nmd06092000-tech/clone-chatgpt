@@ -17,8 +17,8 @@ function submit() {
 
 <template>
   <div class="bg-white py-3">
-    <div class="max-w-3xl mx-auto">
-      <div class="flex items-center justify-between gap-3 border border-gray-200 shadow rounded-3xl px-4 py-0.5">
+    <div class="max-w-2xl mx-auto">
+      <div class="flex items-center justify-between gap-3 border border-gray-200 shadow rounded-3xl px-4 py-1">
         <textarea
           v-model="text"
           rows="1"
@@ -31,8 +31,11 @@ function submit() {
           @click="submit"
           :disabled="!text.trim()">➤
         </button>
+
+        
        
       </div>
+      <span class="flex justify-center text-sm pt-2 text-gray-300">PrivateGPT can make mistakes, so cross-check it.</span>
     </div>
   </div>
 </template>
