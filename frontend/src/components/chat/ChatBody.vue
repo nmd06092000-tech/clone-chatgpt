@@ -1,11 +1,22 @@
+<script setup lang="ts">
+import MessageItem from "./MessageItem.vue";
+
+type UiMessage = { role: "user" | "assistant"; content: string };
+
+defineProps<{
+  messages: UiMessage[];
+}>();
+</script>
+
 <template>
   <div class="flex-1 overflow-y-auto">
-    <div class="max-w-3xl mx-auto w-full py-10 px-8">
-      <MessageItem />
+    <div class="max-w-3xl mx-auto w-full py-10 px-8 space-y-6">
+      <MessageItem
+        v-for="(m, idx) in messages"
+        :key="idx"
+        :role="m.role"
+        :content="m.content"
+      />
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import MessageItem from "./MessageItem.vue";
-</script>
