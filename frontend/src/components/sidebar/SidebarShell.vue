@@ -1,25 +1,27 @@
-<template>
-  <aside
-    class="
-      w-[220px]
-      min-w-[220px]
-      border-r
-      border-gray-200
-      bg-[#f9fafb]
-      flex
-      flex-col
-    "
-  >
-    <SidebarHeader />
-
-    <ConversationList class="flex-1 overflow-y-auto" />
-
-    <SidebarProfile />
-  </aside>
-</template>
-
 <script setup lang="ts">
+import { ref } from "vue";
 import SidebarHeader from "./SidebarHeader.vue";
 import ConversationList from "./ConversationList.vue";
 import SidebarProfile from "./SidebarProfile.vue";
+
+const isCollapsed = ref(false);
+
+const currentUser = {
+  name: "Your Name",
+  email: "nmd0609",
+  avatarUrl: "",
+};
 </script>
+
+<template>
+  <aside
+    class="flex h-screen shrink-0 flex-col border-r border-gray-200 bg-[#f9fafb] transition-all duration-200"
+    :class="isCollapsed ? 'w-[64px]' : 'w-[220px]'"
+  >
+    <SidebarHeader :collapsed="isCollapsed" @toggle="isCollapsed = !isCollapsed" />
+
+    <ConversationList v-if="!isCollapsed" class="flex-1 overflow-y-auto" />
+
+    <SidebarProfile v-if="!isCollapsed" :user="currentUser" />
+  </aside>
+</template>

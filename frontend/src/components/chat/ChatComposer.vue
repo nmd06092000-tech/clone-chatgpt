@@ -8,34 +8,36 @@ const emit = defineEmits<{
 const text = ref("");
 
 function submit() {
-  const t = text.value.trim();
-  if (!t) return;
-  emit("send", t);
+  const value = text.value.trim();
+  if (!value) return;
+
+  emit("send", value);
   text.value = "";
 }
 </script>
 
 <template>
-  <div class="bg-white py-3">
-    <div class="max-w-2xl mx-auto">
-      <div class="flex items-center justify-between gap-3 border border-gray-200 shadow rounded-3xl px-4 py-1">
+  <div class="bg-white px-3 pb-4 pt-2">
+    <div class="mx-auto w-full max-w-3xl">
+      <div class="flex h-16 items-center gap-3 rounded-[28px] border border-gray-200 bg-white px-4 py-3 shadow-sm">
         <textarea
           v-model="text"
           rows="1"
-          placeholder="Type a message"
-          class="flex-1 resize-none outline-none"
+          placeholder="Message of type ..."
+          class="max-h-40 min-h-7 flex-1 resize-none bg-transparent text-base leading-7 outline-none placeholder:text-gray-400"
           @keydown.enter.exact.prevent="submit"
         />
-        <button
-          class="w-10 h-10 text-white rounded-full bg-black hover:bg-gray-500"
-          @click="submit"
-          :disabled="!text.trim()">➤
-        </button>
 
-        
-       
+        <button
+          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white disabled:bg-gray-500"
+          :disabled="!text.trim()"
+          @click="submit"
+        >
+          &uarr;
+        </button>
       </div>
-      <span class="flex justify-center text-sm pt-2 text-gray-300">PrivateGPT can make mistakes, so cross-check it.</span>
+
+      <p class="pt-2 text-center text-xs text-gray-400">PrivateGPT can make mistakes, so cross-check it.</p>
     </div>
   </div>
 </template>
