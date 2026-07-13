@@ -65,6 +65,10 @@ onBeforeUnmount(() => {
   document.removeEventListener("click", closeModelMenu);
   document.removeEventListener("keydown", closeModelMenuOnEscape);
 });
+
+const emit = defineEmits<{
+  (e: "new-chat"):void;
+}>();
 </script>
 
 <template>
@@ -136,7 +140,7 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <button class="group flex h-10 items-center gap-2 rounded-full border border-gray-200 bg-white px-3.5 text-sm font-medium text-gray-800 shadow-sm transition hover:border-gray-300 hover:bg-gray-50 hover:shadow">
+    <button @click="emit('new-chat')" class="group flex h-10 items-center gap-2 rounded-full border border-gray-200 bg-white px-3.5 text-sm font-medium text-gray-800 shadow-sm transition hover:border-gray-300 hover:bg-gray-50 hover:shadow">
       <svg class="h-4 w-4 text-gray-700 transition group-hover:text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-6" />
         <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L11 15l-4 1 1-4 8.5-8.5z" />

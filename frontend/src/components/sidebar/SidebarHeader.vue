@@ -5,6 +5,7 @@ defineProps<{
 
 defineEmits<{
   (e: "toggle"): void;
+  (e: 'new-chat'): void;
 }>();
 </script>
 
@@ -30,7 +31,7 @@ defineEmits<{
       </button>
     </div>
 
-    <button class="flex h-10 w-full items-center gap-3 rounded-xl px-2.5 text-sm font-medium text-gray-800 transition hover:bg-gray-100" type="button" :class="collapsed ? 'justify-center px-0' : 'justify-start'">
+    <button @click="$emit('new-chat')" class="flex h-10 w-full items-center gap-3 rounded-xl px-2.5 text-sm font-medium text-gray-800 transition hover:bg-gray-100" type="button" :class="collapsed ? 'justify-center px-0' : 'justify-start'">
       <svg class="h-4 w-4 shrink-0 text-gray-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-6" />
         <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L11 15l-4 1 1-4 8.5-8.5z" />

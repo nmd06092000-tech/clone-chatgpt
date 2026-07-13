@@ -11,6 +11,10 @@ const currentUser = {
   email: "nmd0609",
   avatarUrl: "",
 };
+
+const emit = defineEmits<{
+  (e: 'new-chat'): void;
+}>();
 </script>
 
 <template>
@@ -18,7 +22,10 @@ const currentUser = {
     class="flex h-screen shrink-0 flex-col border-r border-gray-200 bg-[#f9fafb] transition-all duration-200"
     :class="isCollapsed ? 'w-[64px]' : 'w-[220px]'"
   >
-    <SidebarHeader :collapsed="isCollapsed" @toggle="isCollapsed = !isCollapsed" />
+    <SidebarHeader :collapsed="isCollapsed"
+                    @toggle="isCollapsed = !isCollapsed"
+                    @new-chat="$emit('new-chat')"
+    />
 
     <ConversationList v-if="!isCollapsed" class="flex-1 overflow-y-auto" />
 
