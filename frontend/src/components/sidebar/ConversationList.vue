@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import ConversationListItem from "./ConversationListItem.vue";
+import type { Conversation } from "../../types/chat.ts";
+
+const props = defineProps<{
+  conversations: Conversation[];
+  activeConversationId: string;
+}>();
+
+const emit = defineEmits<{
+  (e: "select-conversation", id: string): void;
+}>();
+</script>
+
 <template>
   <div class="px-4 pb-4">
     <h3
@@ -13,18 +27,12 @@
     </h3>
 
     <ConversationListItem
-      v-for="chat in chats"
+      v-for="chat in conversations"
       :key="chat.id"
       :title="chat.title"
-      :active="chat.active"
+      :active="chat.id === activeConversationId"
+      @click="$emit('select-conversation', chat.id)"
     />
   </div>
 </template>
 
-<script setup lang="ts">
-import ConversationListItem from "./ConversationListItem.vue";
-
-const chats = [
-  
-];
-</script>

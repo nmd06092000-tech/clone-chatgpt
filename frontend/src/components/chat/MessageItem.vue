@@ -1,21 +1,14 @@
 <script setup lang="ts">
 defineProps<{
-  role: "user" | "assistant";
+  role: "user" | "assistant" | "system";
   content: string;
 }>();
 </script>
 
 <template>
-  <div class="flex gap-4 px-8">
-    <div
-      class="w-12 h-12 rounded-full text-white flex items-center justify-center"
-      :class="role === 'assistant' ? 'bg-[#10A37F]' : 'bg-gray-700'"
-    >
-      {{ role === "assistant" ? "AI" : "U" }}
-    </div>
-
-    <div class="prose max-w-none whitespace-pre-wrap">
-      <p>{{ content }}</p>
-    </div>
+  <div class="max-w-[80%] rounded-xl px-4 py-2"
+       :class="role === 'user' ? 'ml-auto bg-gray-100 ' : 'bg-gray-100 text-gray-800'"
+       >
+       {{ content }}
   </div>
 </template>

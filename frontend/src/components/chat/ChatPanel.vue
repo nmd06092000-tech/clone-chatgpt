@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import ChatHeader from "./ChatHeader.vue";
 import ChatBody from "./ChatBody.vue";
 import ChatComposer from "./ChatComposer.vue";
 import { computed } from "vue";
 import EmptyState from "./EmptyState.vue";
-
-type UiMessage = { role: "user" | "assistant"; content: string };
+import type { Message } from "../../types/chat.ts";
 
 const props = defineProps<{
-  messages: UiMessage[];
+  messages: Message[];
 }>();
 
 const emit = defineEmits<{

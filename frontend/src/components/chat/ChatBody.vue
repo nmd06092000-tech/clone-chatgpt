@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import MessageItem from "./MessageItem.vue";
-import EmptyState  from "./EmptyState.vue";
-
-type UiMessage = { role: "user" | "assistant"; content: string };
+import type { Message } from "../../types/chat.ts";
 
 defineProps<{
-  messages: UiMessage[];
+  messages: Message[];
 }>();
 </script>
 

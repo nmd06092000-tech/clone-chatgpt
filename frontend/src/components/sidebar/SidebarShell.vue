@@ -3,6 +3,7 @@ import { ref } from "vue";
 import SidebarHeader from "./SidebarHeader.vue";
 import ConversationList from "./ConversationList.vue";
 import SidebarProfile from "./SidebarProfile.vue";
+import type { Conversation } from "../../types/chat.ts";
 
 const isCollapsed = ref(false);
 
@@ -12,7 +13,13 @@ const currentUser = {
   avatarUrl: "",
 };
 
+const props = defineProps<{
+  conversations: Conversation[];
+  activeConversationId: string;
+}>();
+
 const emit = defineEmits<{
+  (e: "select-conversation", id: string): void;
   (e: 'new-chat'): void;
 }>();
 </script>
@@ -27,7 +34,12 @@ const emit = defineEmits<{
                     @new-chat="$emit('new-chat')"
     />
 
-    <ConversationList v-if="!isCollapsed" class="flex-1 overflow-y-auto" />
+    <ConversationList v-if="!isCollapsed" 
+                      class="flex-1 overflow-y-auto"
+                      :conversations="conversations"
+                      :active-conversation-id="activeConversationId"
+                      @select-conversation="$emit('select-conversation', $event)"
+    />
 
     <SidebarProfile v-if="!isCollapsed" :user="currentUser" />
   </aside>
