@@ -11,6 +11,17 @@ function createId() {
   )
 }
 
+function deleteConversation(id: string) {
+  const index = conversations.value.findIndex((c) => c.id === id);
+  if (index !== -1) {
+    conversations.value.splice(index, 1);
+    if (activeConversationId.value === id) {
+      activeConversationId.value =
+        conversations.value[0]?.id ?? "";
+    }
+  }
+}
+
 function builTitleFromText(text: string) {
   const trimmed = text.trim();
   if (!trimmed) return "New chat";
@@ -151,6 +162,7 @@ function handleNewChat() {
       :active-conversation-id="activeConversationId"
       @select-conversation="selectConversation"
       @new-chat="handleNewChat"
+      @delete-conversation="deleteConversation"
     />
 
     <main class="flex-1">

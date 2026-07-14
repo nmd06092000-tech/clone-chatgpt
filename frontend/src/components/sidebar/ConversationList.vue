@@ -9,7 +9,12 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: "select-conversation", id: string): void;
+  (e: "delete-conversation", id: string): void;
 }>();
+
+function handleDelete(id: string) {
+  emit('delete-conversation', id);
+}
 </script>
 
 <template>
@@ -31,7 +36,9 @@ const emit = defineEmits<{
       :key="chat.id"
       :title="chat.title"
       :active="chat.id === activeConversationId"
+      :id="chat.id"
       @click="$emit('select-conversation', chat.id)"
+      @delete-item="handleDelete"
     />
   </div>
 </template>

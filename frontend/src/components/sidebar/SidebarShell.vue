@@ -20,6 +20,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: "select-conversation", id: string): void;
+  (e: "delete-conversation", id: string): void;
   (e: 'new-chat'): void;
 }>();
 </script>
@@ -39,6 +40,7 @@ const emit = defineEmits<{
                       :conversations="conversations"
                       :active-conversation-id="activeConversationId"
                       @select-conversation="$emit('select-conversation', $event)"
+                      @delete-conversation="$emit('delete-conversation', $event)"
     />
 
     <SidebarProfile v-if="!isCollapsed" :user="currentUser" />
